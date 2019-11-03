@@ -1,0 +1,148 @@
+.menu_container {
+    position : absolute;
+    left : 5px;
+    top : 5px;
+    height : 70%;
+    width : 18%;
+}
+p{
+    margin-top : 5%
+}
+.logo {
+    display : block;
+    position : relative;
+    left : 43%;
+    margin-top : 2.5%;
+}
+body{
+    margin : 0;
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+#mynav{
+    position : absolute;
+    width : 50px;
+    height : 50px;
+    cursor : pointer;
+}
+.menubar{
+    display : block;
+    position : relative;
+    width : 100%;
+    height : 100%;
+    float : left;
+    margin-bottom : auto;
+    margin-top : 10%;
+}
+
+.nav_item {
+    display : block;
+    padding-bottom : 50px;
+    color : white;
+    text-decoration:none;
+    border : 1px solid black;
+    padding :5px;
+    margin : 0px;
+}
+.searchType {
+    width : 100%;
+    height : 1.5rem;
+    text-align : center;
+}
+.searchType ul {
+    color : gray;
+}
+.tab_item {
+    display : inline;
+    list-style-type : none;
+}
+.tab_item a {
+    color : gray;
+    text-decoration : none;
+}
+.title {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.searchArea {
+    display : block;
+    height : 3.5em;
+    width : 100%;
+    margin-bottom : 5%;
+}
+.schoolFindBtn {
+    width : 10%;
+    height : 3.5em;
+    background : #01937f;
+    border : 3px solid #01937f;
+}
+#inputArea {
+    border : 3px solid #01937f;
+    width : 50%;
+    height : 100%;
+    float : left;
+    font-size:1em;
+    margin-left : 22%;
+}
+
+#searchButton {
+    background : #01937f ;
+    width : 4em;
+    height : 100%;
+    float : left;
+    margin-right : 20%;
+    border : 2px solid #01937f;
+    padding-left : auto;
+    padding-right : auto;
+}
+.btn_img{
+    width : 60%;
+    height : 50%;
+    background:#01937f;
+}
+
+.menu {
+    display : none;
+    text-align : left;
+    position : absolute;
+    top : 40px;
+    width : 100%;
+    height : 100%;
+    float : left;
+    background : black;
+    opacity : 0.4;
+    margin-top : 40px;
+}
+
+.content {
+    width:50%;
+    height:50%;
+    margin-left:25%;
+    margin-right:50%;
+}
+.regionSelect {
+    display : inline;
+    margin-right : 60px;
+}
+.schoolType {
+    display : inline;
+    margin-right : 60px;
+}
+footer {
+    position : fixed;
+    bottom : 0;
+    background : #cdcdcd;
+    text-align : center;
+    width : 100%;
+}
+.regionMenu {
+    display : inline;
+    margin-right : 20px;
+}
+.schoolMenu {
+    display : inline;
+    margin-right : 20px;
+}
+#careernet {
+    margin-left : 30%;
+}

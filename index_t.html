@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="style.css">
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src = "script.js"></script>
+<title>커리어넷</title>
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/style.css?ver=1.2" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/ui/redmond/jquery-ui-1.8.16.custom.css"/>
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/idangerous.swiper.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/idangerous.swiper.scrollbar.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/print.css" media="print" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/js/jqplot/jquery.jqplot.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/common.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/main.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/res_style.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/contents.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/owl.theme.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/openApiIframe.css?ver=1" />
+
+<!--[if IE 8]>
+<link rel="stylesheet" href="//www.career.go.kr/webres/css/front/ie8.css" type="text/css" />
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" href="//www.career.go.kr/webres/css/front/ie9.css" type="text/css" />
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/rew/html5shiv.min.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/rew/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.datepicker_f.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/i18n/jquery.ui.datepicker-ko_f.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery.form.js"></script>
+
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/commonNew.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/common.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/js.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/makePCookie.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/ajax.call.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/design.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/idangerous.swiper.scrollbar-2.1.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/rew/owl.carousel.js?ver=1.0"></script>
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/rew/common.js"></script>
+</head>
+
+<body id="careernet" style="overflow:hidden;">
+
+
+<script type="text/javascript" >
+<!--
+document.title = '고등학교 | 커리어넷 학교정보';
+$(document).ready(function(){
+	
+	if("" != ""){
+        $("#searchSchulNm").focus();
+	}
+	//페이징 갯수 처리
+	$('input[name=pageSize]:radio').click(function() {
+		if ($('#fPageSize').val() != $(this).val()) {
+			$('#fPageSize').val($(this).val());
+			fn_list("1");
+		}
+	});
+	
+	$('input[name=pageSize]:radio').keypress(function(e) {
+		e.which = e.which | e.keyCode;
+		if (e.which == 13) {
+			return false;
+		}
+	});
+	
+	$('input[name=pageSize]:radio').keydown(function(e) {
+		e.which = e.which | e.keyCode;
+		if (e.which == 13) {
+			if ($('#fPageSize').val() != $(this).val()) {
+				$('#fPageSize').val($(this).val());
+				fn_list("1");
+			}
+		}
+		
+		// 40 down arrow key, 38 up arrow key
+		if (e.which == 40) {
+			if ($(this).attr('id') == 'pageSize10') {
+				$('#pageSize20').focus();
+			} else if ($(this).attr('id') == 'pageSize20') {
+				$('#pageSize30').focus();
+			} else if ($(this).attr('id') == 'pageSize30') {
+				$('#pageSize10').focus();
+			}
+			return false;
+		} else if ( e.which == 38) { 
+			if ($(this).attr('id') == 'pageSize10') {
+				$('#pageSize30').focus();
+			} else if ($(this).attr('id') == 'pageSize20') {
+				$('#pageSize10').focus();
+			} else if ($(this).attr('id') == 'pageSize30') {
+				$('#pageSize20').focus();
+			}
+			return false;
+		}
+	});
+	
+	$(".list_apply").bind("click", function() {
+		$('#fPageSize').val($("#tagUl1").val());
+		fn_list("1");
+	});
+	
+	if($("#searchschoolType").val() != null && $("#searchschoolType").val().length > 0) {
+		var data = $("#searchschoolType").val();
+		if(data.indexOf($("#schoolType1").val()) > -1) $("#schoolType1").prop("checked",true);
+		if(data.indexOf($("#schoolType2").val()) > -1) $("#schoolType2").prop("checked",true);
+		if(data.indexOf($("#schoolType3").val()) > -1) {
+			$("#schoolType3").prop("checked",true);
+		} else {
+			if(data.indexOf($("#schoolType5").val()) > -1) $("#schoolType5").prop("checked",true);
+		}
+		if(data.indexOf($("#schoolType4").val()) > -1) $("#schoolType4").prop("checked",true);		
+		if(data.indexOf($("#schoolType6").val()) > -1) $("#schoolType6").prop("checked",true);
+		if($("input[name=schoolType]:checked").length == 5) {
+			$("input[name=schoolTypeAll]").prop("checked",true);
+			$("#schoolType5").prop("checked",true);
+		}
+	}
+});
+
+function fn_list(pageIndex){
+	$("#pageIndex").val(pageIndex);
+	
+	$("#frm").attr("target", "_self");
+
+	if ($("#isIframe").val() == 'Y') {
+		$("#frm").attr("action", "//www.career.go.kr/cnet/front/base/school/schoolHightList.iframe").submit();
+	} else {
+		$("#frm").attr("action", "//www.career.go.kr/cnet/front/base/school/schoolHightList.do").submit();
+	}
+}
+
+function fn_addData(){
+	var addDt = "";
+	$("input[name=searchAreaCode]:checked").each(function(){
+		if($(this).val() != ""){
+			addDt = $(this).val()+","+addDt;
+		}
+		return ;
+	});
+	
+	addDt = addDt.substring(0, (addDt.length)-1);
+	$("input[name=searchAreaCode]").val(addDt);
+	
+	var addDt2 = "";
+	var arr = $("input[name=schoolType]:checked");
+	for(var i = 0 ; i < arr.length ; i++) {		
+		addDt2 += ","+ $(arr[i]).val();
+	}
+	addDt2 = addDt2.substring(1, addDt2.length);
+	$("input[name=searchschoolType]").val(addDt2);
+	
+	
+	fn_list();
+}
+
+function fn_check(){
+	if($("input[name=searchAreaCodeAll]").is(":checked")){
+		$("input[name=searchAreaCode]").attr("checked", true);
+	}else{
+		$("input[name=searchAreaCode]").attr("checked", false);
+	}
+}
+function fn_check2(){
+	if($("input[name=schoolTypeAll]").is(":checked")){
+		$("input[name=schoolType]").attr("checked", true);
+	}else{
+		$("input[name=schoolType]").attr("checked", false);
+	}
+}
+//-->
+</script>
+
+    <header>
+            <a href="index.html" class="logo "><img src="images/mainLogo.png" alt = "로고"></a>
+            <nav class="menu_container">
+                <div class = "nav menubar">
+                    <a><img id="mynav" src ="images\menubutton.png" ></a>
+                    <ul class="menu">
+                        <li><a href="index.html" class="nav_item">검색</a></li>
+                        <li><a href="developer.html" class="nav_item">개발자</a></li>
+                        <li><a href="whatisthispage.html" class="nav_item">페이지 소개</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+<div id="contents">
+	
+	<form name="frm" id="frm" method="post" action="//www.career.go.kr/cnet/front/base/school/schoolHightList.do">
+	<input type="hidden" name="pageIndex" id="pageIndex" value="1" />
+	<input type="hidden" name="fPageSize" id="fPageSize" value="" />
+	<input type="hidden" name="searchAreaCode" id="searchAreaCode" value="" />
+	<input type="hidden" name="searchschoolType" id="searchschoolType" value="" />
+	<input type="hidden" name="isIframe" id="isIframe" value="Y" />
+
+	<div> <!-- 박스 안 탭갯수 많을때 -->
+		<h2 class="title_h1"><p class="tip_part"><span class="icon">학교정보</span></p></h2>
+		<fieldset>
+		<legend>학교정보검색</legend>
+		
+		<!-- RENEW마크업 START -->
+		<div class="searchBox_re"> <!-- 검색박스 -->
+			<div class="searchWrap"> <!-- block1 -->
+				<div class="srchForm_re"> <!-- 검색 -->
+					<label for="searchJobNm" class="hidLb">검색어 입력</label>
+					<input type="text" name="searchSchulNm" id="searchSchulNm" class="inputSrch_re" value="" />
+					<a href="#" class="btnSrch_re" onclick="fn_addData();">검색</a>
+				</div>
+				<div class="tab_wrap2_re wideTy_re"> <!-- 탭 -->
+					<div class="tab_menus_re">
+						<ul class="grid6 arrow">
+							<li class="tab02"><a href="//www.career.go.kr/cnet/front/base/school/schoolPrimaryList.iframe" >초등학교</a></li>
+							<li class="tab03"><a href="//www.career.go.kr/cnet/front/base/school/schoolMiddleList.iframe" >중학교</a></li>
+							<li class="tab04"><a href="//www.career.go.kr/cnet/front/base/school/schoolHightList.iframe" class="selected">고등학교</a></li>
+							<li class="tab01"><a href="//www.career.go.kr/cnet/front/base/school/schoolUniversityList.iframe" >대학교</a></li>
+							<li class="tab05"><a href="//www.career.go.kr/cnet/front/base/school/schoolEtcList.iframe" >특수/각종학교</a></li>
+							<li class="tab06 last"><a href="//www.career.go.kr/cnet/front/base/school/schoolCounterproposalList.iframe" >대안학교</a></li>
+						</ul>
+					</div>
+				</div><!-- 탭 include -->
+				</div>
+		</div> <!-- //검색박스 -->
+		<!-- //RENEW마크업 START -->
+			
+		<!-- subject_box_check -->
+		<h3 class="blind">고등학교 검색조건 선택</h3>
+		<div class="subject_box_check">	
+			<strong class="tit">지역선택</strong>
+			<div class="list_ul03">	
+			<ul>
+				<li>					
+					<input type="checkbox" name="searchAreaCodeAll" id="searchAreaCodeAll" value=""  onclick="fn_check();"/><label for="searchAreaCodeAll">전체</label>
+				</li>
+				<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100260" value="100260" /><label for="searchAreaCode100260">서울특별시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100267" value="100267" /><label for="searchAreaCode100267">부산광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100269" value="100269" /><label for="searchAreaCode100269">인천광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100272" value="100272" /><label for="searchAreaCode100272">대구광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100275" value="100275" /><label for="searchAreaCode100275">광주광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100271" value="100271" /><label for="searchAreaCode100271">대전광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100273" value="100273" /><label for="searchAreaCode100273">울산광역시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100704" value="100704" /><label for="searchAreaCode100704">세종특별자치시</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100276" value="100276" /><label for="searchAreaCode100276">경기도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100278" value="100278" /><label for="searchAreaCode100278">강원도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100281" value="100281" /><label for="searchAreaCode100281">충청남도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100280" value="100280" /><label for="searchAreaCode100280">충청북도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100285" value="100285" /><label for="searchAreaCode100285">경상북도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100291" value="100291" /><label for="searchAreaCode100291">경상남도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100282" value="100282" /><label for="searchAreaCode100282">전라북도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100283" value="100283" /><label for="searchAreaCode100283">전라남도</label>
+							</li>
+							<li>
+								<input type="checkbox" name="searchAreaCode" id="searchAreaCode100292" value="100292" /><label for="searchAreaCode100292">제주특별자치도</label>
+							</li>
+							</ul>
+			</div>
+			<strong class="tit mt20" style="">학교유형</strong>
+			<div class="list_ul" style="">	
+			<ul>
+				<li class="">
+					<input type="checkbox" name="schoolTypeAll" id="schoolType0" value="" onclick="fn_check2();"/>
+					<label for="schoolType0">전체</label>
+				</li>	
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType1" value="104228" />
+					<label for="schoolType1">일반고</label>
+				</li>
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType2" value="100368,100369,100370" />
+					<label for="schoolType2">특성화고</label>
+				</li>
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType3" value="100371,100372,100373,100374" />
+					<label for="schoolType3">특수목적고</label>
+				</li>
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType4" value="100375,100376" />
+					<label for="schoolType4">자율고</label>
+				</li>
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType5" value="100374" />
+					<label for="schoolType5">마이스터고</label>
+				</li>
+				<li class="">
+					<input type="checkbox" name="schoolType" id="schoolType6" value="100377" />
+					<label for="schoolType6">기타</label>
+				</li>
+
+			</ul>
+			</div>
+			
+		</div>				
+		<p class="search_wrap_foot"></p>
+		<!-- e:subject_box_check -->
+		
+		</fieldset>
+	</div>
+	
+	<!-- 검색결과 리스트 -->
+	<h3 class="blind">고등학교 검색결과 목록</h3>
+	<div>
+		<p class="result_list_info"><em>선택검색결과 : </em> 전체 <strong>2387</strong> 건이 검색되었습니다</p>
+		<div class="select_right04">
+			<div class="select open">
+				<select id="tagUl1" name="pageSize" class="iList">
+					<option class="option" value="10" ><label>10개씩보기</label></option>
+					<option class="option" value="20" ><label>20개씩보기</label></option>
+					<option class="option" value="30" ><label>30개씩보기</label></option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="board_list">
+		<table>
+			<caption>번호, 학교명, 학교유형, 지역으로 이루어진 고등학교 검색 결과</caption>
+			<colgroup>
+				<col style="width:10%" />
+				<col style="width:30%" />
+				<col style="width:20%" />
+				<col style="width:20%" />
+				<col style="width:20%" />
+			</colgroup>
+			<thead>
+			<tr>
+				<th scope="col" class="first">번호</th>
+				<th scope="col">학교명</th>
+				<th scope="col" style="display:none !important;">학교종류</th>
+				<th scope="col" >학교유형</th>
+				<th scope="col" class="last">지역</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+					<td class="tc">2387</td>
+					<td style="text-align:center;"><a href="http://gagog.gwe.hs.kr/main.do" target="_blank" title="새 창 열림">가곡고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">강원도</td>
+				</tr>
+			<tr>
+					<td class="tc">2386</td>
+					<td style="text-align:center;"><a href="http://www.garak.hs.kr" target="_blank" title="새 창 열림">가락고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">서울특별시</td>
+				</tr>
+			<tr>
+					<td class="tc">2385</td>
+					<td style="text-align:center;"><a href="http://www.garim.hs.kr" target="_blank" title="새 창 열림">가림고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">인천광역시</td>
+				</tr>
+			<tr>
+					<td class="tc">2384</td>
+					<td style="text-align:center;"><a href="http://www.gaya.hs.kr" target="_blank" title="새 창 열림">가야고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">부산광역시</td>
+				</tr>
+			<tr>
+					<td class="tc">2383</td>
+					<td style="text-align:center;"><a href="http://www.gaon.hs.kr" target="_blank" title="새 창 열림">가온고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">경기도</td>
+				</tr>
+			<tr>
+					<td class="tc">2382</td>
+					<td style="text-align:center;"><a href="http://www.gaun.hs.kr" target="_blank" title="새 창 열림">가운고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">경기도</td>
+				</tr>
+			<tr>
+					<td class="tc">2381</td>
+					<td style="text-align:center;"><a href="http://school.gyo6.net/gago" target="_blank" title="새 창 열림">가은고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">경상북도</td>
+				</tr>
+			<tr>
+					<td class="tc">2380</td>
+					<td style="text-align:center;"><a href="http://www.gajaeul.hs.kr" target="_blank" title="새 창 열림">가재울고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">서울특별시</td>
+				</tr>
+			<tr>
+					<td class="tc">2379</td>
+					<td style="text-align:center;"><a href="http://gajeong.icehs.kr" target="_blank" title="새 창 열림">가정고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">인천광역시</td>
+				</tr>
+			<tr>
+					<td class="tc">2378</td>
+					<td style="text-align:center;"><a href="http://gajwa-h.hs.kr/" target="_blank" title="새 창 열림">가좌고등학교</a></td>
+					<td class="tc" style="display:none !important;">일반고</td>
+					<td class="tc" >일반고</td>
+					<td class="tc">경기도</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+	
+	<!-- pagination -->
+	<div class="pagination">
+		<strong>1</strong>&#160;<a href="?pageIndex=2" onclick="fn_list(2);return false; ">2</a>&#160;<a href="?pageIndex=3" onclick="fn_list(3);return false; ">3</a>&#160;<a href="?pageIndex=4" onclick="fn_list(4);return false; ">4</a>&#160;<a href="?pageIndex=5" onclick="fn_list(5);return false; ">5</a>&#160;<a href="?pageIndex=6" onclick="fn_list(6);return false; ">6</a>&#160;<a href="?pageIndex=7" onclick="fn_list(7);return false; ">7</a>&#160;<a href="?pageIndex=8" onclick="fn_list(8);return false; ">8</a>&#160;<a href="?pageIndex=9" onclick="fn_list(9);return false; ">9</a>&#160;<a href="?pageIndex=10" onclick="fn_list(10);return false; ">10</a>&#160;<a href="?pageIndex=11" onclick="fn_list(11);return false; "><img src="//www.career.go.kr/cnet/images/egovframework/com/cmm/mod/icon/icon_next.gif"    alt="다음"   border="0"/></a>&#160;<a href="?pageIndex=239" onclick="fn_list(239);return false; "><img src="//www.career.go.kr/cnet/images/egovframework/com/cmm/mod/icon/icon_nextend.gif" alt="맨뒤" border="0"/></a>&#160;
+</div>
+	<!-- // pagination -->
+
+
+	<!-- // 검색결과 리스트 -->
+	</form>	
+</div><!-- 히든처리페이지 -->
+<iframe id="_cm" name="_cm"  title="빈프레임" style="display:none"></iframe>
+</body>
+</html>

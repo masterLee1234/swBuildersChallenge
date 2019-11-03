@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>커리어넷</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/style.css?ver=1.2" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/ui/redmond/jquery-ui-1.8.16.custom.css"/>
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/idangerous.swiper.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/idangerous.swiper.scrollbar.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/print.css" media="print" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/js/jqplot/jquery.jqplot.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/common.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/main.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/res_style.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/contents.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/rew/owl.theme.css" />
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/webres/css/front/openApiIframe.css?ver=1" />
+
+<!--[if IE 8]>
+<link rel="stylesheet" href="/webres/css/front/ie8.css" type="text/css" />
+<![endif]-->
+<!--[if IE 9]>
+<link rel="stylesheet" href="/webres/css/front/ie9.css" type="text/css" />
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/webres/js/rew/html5shiv.min.js"></script>
+<script type="text/javascript" src="/webres/js/rew/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/jquery.ui.datepicker_f.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/ui/i18n/jquery.ui.datepicker-ko_f.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/jquery/jquery.form.js"></script>
+
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/commonNew.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/common.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/js.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/makePCookie.js"></script>
+<script type="text/javascript" src="//www.career.go.kr/webres/js/common/ajax.call.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/design.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/idangerous.swiper.scrollbar-2.1.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/rew/owl.carousel.js?ver=1.0"></script>
+<script type="text/javascript" charset="utf-8" src="//www.career.go.kr/webres/js/rew/common.js"></script>
+</head>
+
+<body id="careernet" style="overflow:visible;">
+
+
+<link rel="stylesheet" type="text/css" href="//www.career.go.kr/cnet/css/front/kcue.css" media="screen, print"/>
+<script type="text/javascript" charset="utf-8">
+<!--
+document.title = '학교정보 | 진로정보망 커리어넷';
+$(document).ready(function(){
+	
+	if("" != ""){
+        $("#searchUnivNm").focus();
+	}
+	
+	//초기셋팅을 위한 처리
+	if($('select[name=schoolType1]').val() == '100323'){
+		$("select[name=schoolType2_0]").hide();
+		$("select[name=schoolType2_1]").show();
+	}else{
+		$("select[name=schoolType2_0]").show();
+		$("select[name=schoolType2_1]").hide();
+	}
+	
+	//페이징 갯수 처리
+	$('input[name=pageSize]:radio').click(function() {
+		if ($('#fPageSize').val() != $(this).val()) {
+			$('#fPageSize').val($(this).val());
+			fn_list("1");
+		}
+	});
+	
+	$('input[name=pageSize]:radio').keypress(function(e) {
+		e.which = e.which | e.keyCode;
+		if (e.which == 13) {
+			return false;
+		}
+	});
+	
+	$('input[name=pageSize]:radio').keydown(function(e) {
+		e.which = e.which | e.keyCode;
+		if (e.which == 13) {
+			if ($('#fPageSize').val() != $(this).val()) {
+				$('#fPageSize').val($(this).val());
+				fn_list("1");
+			}
+		}
+		
+		// 40 down arrow key, 38 up arrow key
+		if (e.which == 40) {
+			if ($(this).attr('id') == 'pageSize10') {
+				$('#pageSize20').focus();
+			} else if ($(this).attr('id') == 'pageSize20') {
+				$('#pageSize30').focus();
+			} else if ($(this).attr('id') == 'pageSize30') {
+				$('#pageSize10').focus();
+			}
+			return false;
+		} else if ( e.which == 38) { 
+			if ($(this).attr('id') == 'pageSize10') {
+				$('#pageSize30').focus();
+			} else if ($(this).attr('id') == 'pageSize20') {
+				$('#pageSize10').focus();
+			} else if ($(this).attr('id') == 'pageSize30') {
+				$('#pageSize20').focus();
+			}
+			return false;
+		}
+	});
+	
+	$(".list_apply").bind("click", function() {
+		$('#fPageSize').val($("#tagUl1").val());
+		fn_list("1");
+	});
+	
+	//학교유형 변경 시 소분류 컨트롤
+	$('select[name=schoolType1]').change(function(){
+	
+		var schTy1 = $('select[name=schoolType1]').val();
+		
+		if(schTy1 == '100323'){
+			$("select[name=schoolType2_0]").hide();
+			$("select[name=schoolType2_1]").show();
+			
+			$('select[name=schoolType2_0]').val("");
+		}else{
+			$("select[name=schoolType2_0]").show();
+			$("select[name=schoolType2_1]").hide();
+			
+			$('select[name=schoolType2_1]').val("");
+		}
+	});
+});
+
+function fn_list(pageIndex) {
+	$("#pageIndex").val(pageIndex);
+	
+	$("#frm").attr("target", "_self");
+	
+	if ($("#isIframe").val() == 'Y') {
+		$("#frm").attr("action", "//www.career.go.kr/cnet/front/base/school/schoolUniversityList.iframe").submit();
+	} else {
+		$("#frm").attr("action", "//www.career.go.kr/cnet/front/base/school/schoolUniversityList.do").submit();
+	}
+}
+
+function fn_addData(){
+	var addDt = "";
+	var addFondDt = "";
+	$("input[name=searchAreaCode]:checked").each(function(){
+		if($(this).val() != ""){
+			addDt = $(this).val()+","+addDt;
+		}
+		return ;
+	});
+	
+	$("input[name=searchFondTy]:checked").each(function(){
+		if($(this).val() != ""){
+			addFondDt = $(this).val()+","+addFondDt;
+		}
+		return ;
+	});
+	
+	addDt = addDt.substring(0, (addDt.length)-1);
+	addFondDt = addFondDt.substring(0, (addFondDt.length)-1);
+	
+	$("input[name=searchAreaCode]").val(addDt);
+	$("input[name=searchFondTy]").val(addFondDt);
+	
+	fn_list();
+}
+
+function fn_check(){
+	if($("input[name=searchAreaCodeAll]").is(":checked")){
+		$("input[name=searchAreaCode]").attr("checked", true);
+	}else{
+		$("input[name=searchAreaCode]").attr("checked", false);
+	}
+}
+
+function fn_fondCheck(){
+	if($("input[name=searchFondTyAll]").is(":checked")){
+		$("input[name=searchFondTy]").attr("checked", true);
+	}else{
+		$("input[name=searchFondTy]").attr("checked", false);
+	}
+}
+
+function univOpen(cd){	
+	 career.sch_ipsi_univ_cd = cd;
+	 career.getKcueHtml();
+}
+
+var career = {
+	removeObject:function(object){
+			if(career.NVL($(object).attr("class"),"").match(/ui\-dialog\-content/)) {
+				$(object).dialog("close");
+			} else {
+				$(object).remove();
+			}
+	}
+	, layout:function(conf) {
+		conf.id = conf.id ? conf.id : 'jquery_layout';
+		var buttons;
+		var buttons1 = { 
+				"확인": function() { 
+					if(conf.action()) { 
+						career.removeObject($(this)); 
+				}
+			} , "닫기": function() {
+				career.removeObject($(this));
+			}
+		} ;		
+	    var buttons2 = {
+				"닫기": function() {
+					career.removeObject($(this));
+					if(conf.closeAction){
+						conf.closeAction();
+					} 
+				}
+			};	    
+	    buttons = conf.buttons ? conf.buttons : conf.action ? buttons1:buttons2;
+		
+	    if(!$("#"+conf.id).length) $("body,html").append($("<div>").attr("id", conf.id));
+		$("#"+conf.id).css("overflow-y","auto")
+		$("#"+conf.id).html(conf.content);
+		$("#"+conf.id).dialog({ width : conf.width, height : conf.height ? conf.height : 'auto', title: conf.title, modal: true, position: conf.position ? conf.position :"center", buttons: buttons, zIndex: 999999, resizable:false });
+	} , replace:function(str,_findValue, _replaceValue) {
+		return str.replace(new RegExp(_findValue,"gi"), _replaceValue);
+	} , sch_ipsi_univ_cd :""
+	, getKcueHtml : function(url) {
+		if(!url) {
+			url = "/modelinfo/ajaxUnivInfoMain.do";
+		}
+		$.ajax({
+			type:'get',
+			url: "http://univ.kcue.or.kr"+url+"?sch_ipsi_year=2014&sch_ipsi_univ_cd="+career.sch_ipsi_univ_cd,
+			dataType: "text/plain",
+			success: function(data){
+				data = career.replace(data,"/image/","http://univ.kcue.or.kr/image/");
+				career.layout({
+					id:"kcueHtml"
+					,title:"http://univ.kcue.or.kr"
+					,content:$(data)
+					,buttons:{	
+					},width:900
+					,height:500
+				});	
+				var $a = $('#kcueHtml').find('a');
+				var ti = 0;
+				$.each($a, function(k,v) {
+					if (v == '') {
+						$(this).attr('href', '#none');
+					}
+					$(this).attr('tabindex', k);
+					if ($(this).parent().attr('class') == 'on') {
+						$(this).focus();
+					}
+					ti = k;
+				});				
+				$('.ui-dialog-titlebar-close').attr('tabindex', ti+1);
+			}
+		});
+	}
+};
+function fncCallTab(url){
+	career.getKcueHtml(url);
+}
+//-->
+</script>
+
+<div id="contents">
+	
+	<form name="frm" id="frm" method="post" action="//www.career.go.kr/cnet/front/base/school/schoolUniversityList.do">
+	<input type="hidden" name="searchAreaCode" id="searchAreaCode" value="" />
+	<input type="hidden" name="pageIndex" id="pageIndex" value="1" />
+	<input type="hidden" name="fPageSize" id="fPageSize" value="" />
+	<input type="hidden" name="searchFondTy" id="searchFondTy" value="" />
+	<input type="hidden" name="isIframe" id="isIframe" value="Y" />
+
+	<div> <!-- 박스 안 탭갯수 많을때 -->
+		<h2 class="title_h1"><p class="tip_part"><span class="icon">학교정보</span></p></h2>
+		<fieldset>
+		<legend>학교정보검색</legend>
+		
+		<!-- RENEW마크업 START -->
+		<div class="searchBox_re"> <!-- 검색박스 -->
+			<div class="searchWrap"> <!-- block1 -->
+				<div class="srchForm_re"> <!-- 검색 -->
+					<label for="searchSchulNm" class="hidLb">검색어 입력</label>
+					<input type="text" name="searchSchulNm" id="searchSchulNm" class="inputSrch_re" value="" />
+					<a href="#" class="btnSrch_re" onclick="fn_addData();">검색</a>
+				</div>
+				<div class="tab_wrap2_re wideTy_re"> <!-- 탭 -->
+					<div class="tab_menus_re">
+						<ul class="grid6 arrow">
+							<li class="tab04"><a href="highschoolSearch.html" >고등학교</a></li>
+							<li class="tab01"><a href="collegeSearch.html" class="selected">대학교</a></li>
+						</ul>
+					</div>
+				</div><!-- 탭 include -->
+				</div>
+		</div> <!-- //검색박스 -->
+		<!-- //RENEW마크업 START -->
+			
+		<!-- subject_box_check -->
+		<h3 class="blind">대학교 검색조건 선택</h3>
+		<div class="subject_box_check">	
+			<strong class="tit">지역선택</strong>
+			<div class="list_ul03">	
+			<ul>
+				<li>					
+					<input type="checkbox" name="searchAreaCodeAll" id="searchAreaCodeAll" value=""   onclick="fn_check();"/><label for="searchAreaCodeAll">전체</label>
+				</li>
+				<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100260" value="100260" /><label for="searchAreaCode100260">서울특별시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100267" value="100267" /><label for="searchAreaCode100267">부산광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100269" value="100269" /><label for="searchAreaCode100269">인천광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100272" value="100272" /><label for="searchAreaCode100272">대구광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100275" value="100275" /><label for="searchAreaCode100275">광주광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100271" value="100271" /><label for="searchAreaCode100271">대전광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100273" value="100273" /><label for="searchAreaCode100273">울산광역시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100704" value="100704" /><label for="searchAreaCode100704">세종특별자치시</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100276" value="100276" /><label for="searchAreaCode100276">경기도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100278" value="100278" /><label for="searchAreaCode100278">강원도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100281" value="100281" /><label for="searchAreaCode100281">충청남도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100280" value="100280" /><label for="searchAreaCode100280">충청북도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100285" value="100285" /><label for="searchAreaCode100285">경상북도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100291" value="100291" /><label for="searchAreaCode100291">경상남도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100282" value="100282" /><label for="searchAreaCode100282">전라북도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100283" value="100283" /><label for="searchAreaCode100283">전라남도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100292" value="100292" /><label for="searchAreaCode100292">제주특별자치도</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchAreaCode" id="searchAreaCode100771" value="100771" /><label for="searchAreaCode100771">해외거주</label>
+							</li>
+						</ul>
+			</div>
+			<strong class="tit mt20">학교유형</strong>
+			<div class="list_ul">	
+			<ul>
+				<li class="w100">
+					<label for="schoolType1" class="hid">대학종류 항목 선택</label>
+					<select name="schoolType1" id="schoolType1" class="mr12">
+						<option value="" >전체 </option>
+						<option value="100322" 
+								
+							>전문대학</option>
+						<option value="100323" 
+								
+							>대학(4년제)</option>
+						</select>
+					<!-- 전문대학 소분류 -->
+					<label for="schoolType2_0" class="hid">전문대학 소분류 항목 선택</label>							
+					<select name="schoolType2_0" id="schoolType2_0" class="mr12">
+						<option value="" >전체 </option>
+						<option value="100324" 
+								
+							>전문대학</option>
+						<option value="100325" 
+								
+							>기능대학(폴리텍대학)</option>
+						<option value="100326" 
+								
+							>사이버대학(2년제)</option>
+						<option value="100327" 
+								
+							>각종대학(전문)</option>
+						</select>				
+					<!-- 대학  소분류 -->
+					<label for="schoolType2_1" class="hid">대학 소분류 항목 선택</label>	
+					<select name="schoolType2_1" id="schoolType2_1" class="mr12">
+						<option value="" >전체 </option>
+						<option value="100328" 
+								
+							>일반대학</option>
+						<option value="100329" 
+								
+							>교육대학</option>
+						<option value="100330" 
+								
+							>산업대학</option>
+						<option value="100331" 
+								
+							>사이버대학(4년제)</option>
+						<option value="100332" 
+								
+							>각종대학(대학)</option>
+						</select>		
+				</li>
+			</ul>
+			</div>
+			<strong class="tit mt20">설립구분</strong>
+			<div class="list_ul02">	
+			<ul>
+				<li>					
+					<input type="checkbox" name="searchFondTyAll" id="searchFondTyAll" value=""  onclick="fn_fondCheck();" /><label for="searchFondTyAll">전체</label>
+				</li>
+				<li>
+							<input type="checkbox" name="searchFondTy" id="searchFondTy100334" value="100334" /><label for="searchFondTy100334">국립</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchFondTy" id="searchFondTy100335" value="100335" /><label for="searchFondTy100335">사립</label>
+							</li>
+						<li>
+							<input type="checkbox" name="searchFondTy" id="searchFondTy100336" value="100336" /><label for="searchFondTy100336">공립</label>
+							</li>
+						</ul>
+			</div>
+			
+		</div>				
+		<p class="search_wrap_foot"></p>
+		<!-- e:subject_box_check -->
+		
+		</fieldset>
+	</div>
+	
+	<!-- 검색결과 리스트 -->
+	<h3 class="blind">대학교 검색결과 목록</h3>
+	<div>
+		<p class="result_list_info"><em>선택검색결과 : </em> 전체 <strong>440</strong> 건이 검색되었습니다</p>
+		<div class="select_right04">
+			<div class="select open">
+				<select id="tagUl1" name="pageSize" class="iList" title="목록보기 개수 선택">
+					<option class="option" value="10" ><label>10개씩보기</label></option>
+					<option class="option" value="20" ><label>20개씩보기</label></option>
+					<option class="option" value="30" ><label>30개씩보기</label></option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="board_list">
+		<table>
+			<caption>번호, 학교명, 학교종류, 학교유형, 설립, 지역으로 이루어진 대학교 검색 결과</caption>
+			<colgroup>
+				<col style="width:10%" />
+				<col style="width:30%" />
+				<col style="width:15%" />
+				<col style="width:15%" />						
+				<col style="width:15%" />
+				<col style="width:15%" />
+			</colgroup>
+			<thead>
+			<tr>
+				<th scope="col" class="first">번호</th>
+				<th scope="col">학교명</th>
+				<th scope="col">학교종류</th>
+				<th scope="col">학교유형</th>
+				<th scope="col">설립</th>
+				<th scope="col" class="last">지역</th>
+				
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+						<td class="tc">440</td>						
+						<td>
+						<a href="http://www.ict.ac.kr" target="_blank" title="새 창 열림">ICT폴리텍대학(본교)</a></td>
+						<td class="tc">전문대학</td>
+						<td class="tc">전문대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">경기도</td>						
+					</tr>
+				<tr>
+						<td class="tc">439</td>						
+						<td>
+						<a href="http://kfu.kdb.co.kr" target="_blank" title="새 창 열림">KDB금융대학교(본교)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">서울특별시</td>						
+					</tr>
+				<tr>
+						<td class="tc">438</td>						
+						<td>
+						<a href="" target="_blank" title="새 창 열림">LH토지주택대학교(본교)</a>LH토지주택대학교(본교)</td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">대전광역시</td>						
+					</tr>
+				<tr>
+						<td class="tc">437</td>						
+						<td>
+						<a href="" target="_blank" title="새 창 열림">SPC식품과학대학(본교)</a>SPC식품과학대학(본교)</td>
+						<td class="tc">전문대학</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">서울특별시</td>						
+					</tr>
+				<tr>
+						<td class="tc">436</td>						
+						<td>
+						<a href="http://www.kaya.ac.kr/Home/Main.mbz" target="_blank" title="새 창 열림">가야대학교(김해캠퍼스)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">경상남도</td>						
+					</tr>
+				<tr>
+						<td class="tc">435</td>						
+						<td>
+						<a href="http://www.gachon.ac.kr" target="_blank" title="새 창 열림">가천대학교(글로벌캠퍼스)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">경기도</td>						
+					</tr>
+				<tr>
+						<td class="tc">434</td>						
+						<td>
+						<a href="http://www.cku.ac.kr" target="_blank" title="새 창 열림">가톨릭관동대학교(본교)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">강원도</td>						
+					</tr>
+				<tr>
+						<td class="tc">433</td>						
+						<td>
+						<a href="http://songeui.catholic.ac.kr" target="_blank" title="새 창 열림">가톨릭대학교(성의교정)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">서울특별시</td>						
+					</tr>
+				<tr>
+						<td class="tc">432</td>						
+						<td>
+						<a href="http://catholic.ac.kr" target="_blank" title="새 창 열림">가톨릭대학교(성신교정)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">서울특별시</td>						
+					</tr>
+				<tr>
+						<td class="tc">431</td>						
+						<td>
+						<a href="http://www.catholic.ac.kr" target="_blank" title="새 창 열림">가톨릭대학교(본교)</a></td>
+						<td class="tc">대학(4년제)</td>
+						<td class="tc">일반대학</td>
+						<td class="tc">사립</td>						
+						<td class="tc">경기도</td>						
+					</tr>
+				</tbody>
+		</table>
+		
+	</div>
+
+	
+	<!-- pagination -->	
+	<div class="pagination">
+		<strong>1</strong>&#160;<a href="?pageIndex=2" onclick="fn_list(2);return false; ">2</a>&#160;<a href="?pageIndex=3" onclick="fn_list(3);return false; ">3</a>&#160;<a href="?pageIndex=4" onclick="fn_list(4);return false; ">4</a>&#160;<a href="?pageIndex=5" onclick="fn_list(5);return false; ">5</a>&#160;<a href="?pageIndex=6" onclick="fn_list(6);return false; ">6</a>&#160;<a href="?pageIndex=7" onclick="fn_list(7);return false; ">7</a>&#160;<a href="?pageIndex=8" onclick="fn_list(8);return false; ">8</a>&#160;<a href="?pageIndex=9" onclick="fn_list(9);return false; ">9</a>&#160;<a href="?pageIndex=10" onclick="fn_list(10);return false; ">10</a>&#160;<a href="?pageIndex=11" onclick="fn_list(11);return false; "><img src="//www.career.go.kr/cnet/images/egovframework/com/cmm/mod/icon/icon_next.gif"    alt="다음"   border="0"/></a>&#160;<a href="?pageIndex=44" onclick="fn_list(44);return false; "><img src="//www.career.go.kr/cnet/images/egovframework/com/cmm/mod/icon/icon_nextend.gif" alt="맨뒤" border="0"/></a>&#160;
+</div>		
+	<!-- // pagination -->
+
+
+	<!-- // 검색결과 리스트 -->
+	</form>	
+</div><!-- 히든처리페이지 -->
+<iframe id="_cm" name="_cm"  title="빈프레임" style="display:none"></iframe>
+</body>
+</html>
